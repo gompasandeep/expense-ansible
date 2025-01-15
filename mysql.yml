@@ -3,6 +3,7 @@
   become: yes
   vars:
     mysql_root_password: ExpenseApp@1
+    login_host: mysql.sancharlearning.xyz
   tasks:
   - name: install MySQL libraries
     ansible.builtin.pip:
@@ -27,7 +28,7 @@
     community.mysql.mysql_info:
       login_user: root
       login_password: "{{ mysql_root_password }}"
-      login_host: mysql.sancharlearning.xyz
+      login_host: "{{ login_host }}"
     register: mysql_info
     ignore_errors: true
   
